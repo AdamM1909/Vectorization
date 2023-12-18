@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <arm_neon.h>
+// /opt/homebrew/Cellar/gcc/13.2.0/bin/gcc-13 -o vectorizing_4_addition vectorizing_4_addition.c
 
 
 int add(int a, int b) {
@@ -7,8 +8,8 @@ int add(int a, int b) {
 }
 
 
-int32x4_t add4(int32x4_t a, int32x4_t b) {
-  return vaddq_s32(a, b); // NEON equivalent of PADDD
+int32x4_t add4(const int32x4_t a, const int32x4_t b) {
+  return vaddq_s32(a, b); // NEON equivalent of _mm_add_epi32
 }
 
 int main() {
